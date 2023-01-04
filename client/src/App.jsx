@@ -1,9 +1,9 @@
-import './App.css';
-import Login from './pages/Login'
+import './assets/styles/App.scss';
+import Login from './components/Login'
 
 const App = () => {
 	return (
-		<div>App</div>
+		<Login/>
 	)
 }
 
