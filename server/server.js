@@ -12,12 +12,12 @@ app.use(bodyParser.json())
 app.post('/refresh', (req, res) => {
     const refreshToken = req.body.refreshToken
 
-    console.log("testing the token", refreshToken)
+    console.log('testing the token', refreshToken)
     
     const spotifyApi = new SpotifyWebApi({
-        redirectUri: "http://localhost:3000/",
-        clientId: "28cf7c00dd294d4ba53c0456903dfb13",
-        clientSecret: "74670eb768fb4020afdcaaa5c89a23ee",
+        redirectUri: process.env.REDIRECT_URI,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
         refreshToken,
     })
     spotifyApi.refreshAccessToken().then(data => {
@@ -37,9 +37,9 @@ app.post('/refresh', (req, res) => {
 app.post('/login', (req, res) => {
     const code = req.body.code
     const spotifyApi = new SpotifyWebApi({
-        redirectUri: "http://localhost:3000/",
-        clientId: "28cf7c00dd294d4ba53c0456903dfb13",
-        clientSecret: "74670eb768fb4020afdcaaa5c89a23ee",
+        redirectUri: process.env.REDIRECT_URI,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
     })
 
     spotifyApi.authorizationCodeGrant(code).then(data => {
