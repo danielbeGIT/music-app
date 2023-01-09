@@ -5,15 +5,16 @@ import MusicPage from './components/MusicPage'
 const code = new URLSearchParams(window.location.search).get('code')
 
 const App = () => {
-	return ( 
-		// <>
-		// 	<Login/>
-
-		// 	{code === true && (
-		// 		<MusicPage code={code} />
-		// 	)}
-		// </>
-		code ? <MusicPage code={code} /> : <Login/>
+	return (
+		<>
+			{
+				code ? (
+					<MusicPage code={code} />
+				) : (
+					<Login />
+				)
+			}
+		</>
 	)
 }
 

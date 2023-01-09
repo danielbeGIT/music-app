@@ -7,11 +7,35 @@ const scopes = [
     "user-read-currently-playing",
     "user-read-recently-played",
     "user-read-playback-state",
+    "user-read-playback-position",
+    "user-read-private",
+    "user-read-email",
     "user-top-read",
     "user-modify-playback-state",
-    "user-read-private",
     "user-library-read",
     "user-library-modify",
 ];
+
+// clientId: process.env.CLIENT_ID,
+// redirectUri: process.env.REDIRECT_URI,
+
+// const code = new URLSearchParams(window.location.search).get('code')
+
+// export const getCodeFromUrl = () => {
+//     // search for the url location(goes to the #/hastag)
+//     return window.location.hash
+//     // grab the 1st/1 substring
+//     .substring(1)
+//     // remove the extra params, go to the first & and stop
+//     .split('&')
+//     // stop checking after the = mark, take find whatever is inside
+//     .reduce((initial, item) => {
+//         let parts = item.split('=')
+//         // go into the initial array that is return, get code/token from parts[0], pass it to parts[1]
+//         initial[parts[0]] = decodeURIComponent(parts[1])
+
+//         return initial
+//     }, {})
+// }
 
 export const loginUrl = `${AUTH_URL}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=code&show_dialog=true`;

@@ -1,11 +1,15 @@
 import React from 'react'
+// import { useState } from 'react'
 import useAuth from '../hooks/useAuth'
 
 const MusicPage = ({ code }) => {
 	const accessToken = useAuth(code)
 
 	return (
-		<div>{code}</div>
+		<div>
+			<h1>This user has logged in:</h1>
+			<p>{code}</p>
+		</div>
 	)
 }
 
