@@ -1,4 +1,4 @@
-import './assets/styles/App.scss';
+import './assets/styles/App.scss'
 import Login from './components/Login'
 import MusicPage from './components/MusicPage'
 
