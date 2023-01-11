@@ -8,7 +8,7 @@ const useAuth = ( code ) => {
 
     // Login to create/get access token.
     useEffect(() => {
-        axios.post("http://localhost:3001/login/", {
+        axios.post('http://localhost:3001/login/', {
             // Send "code" to the server/route
             code
         }).then(res => {
@@ -32,7 +32,7 @@ const useAuth = ( code ) => {
         if (!refreshToken || !expiresIn) return
         // interval will run the timer each time anything changes
         const interval = setInterval(() => {
-          axios.post("http://localhost:3001/refresh/", {
+          axios.post('http://localhost:3001/refresh/', {
                 // Send refreshToken to the server/route
                 refreshToken
             }).then(res => {

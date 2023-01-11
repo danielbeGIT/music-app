@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import './assets/styles/App.scss'
-import Login from './components/Login'
+import Login from './pages/Login'
 import MusicPage from './pages/MusicPage'
 
 // Search for "code" through the window path/url path
@@ -16,6 +16,9 @@ const App = () => {
 					<Login />
 				)
 			}
+
+			{/* <MusicPage/> */}
+			{/* <Login /> */}
 		</>
 	)
 }

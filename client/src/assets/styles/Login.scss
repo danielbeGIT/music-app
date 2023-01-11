@@ -1,0 +1,24 @@
+.login {
+    background-color: black;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+
+    img {
+        width: 100%;
+    }
+
+    .button {
+        text-decoration: none;
+        color: white;
+        background-color: #1db954;
+        padding: 0.5rem 2.5rem;
+        border-radius: 5rem;
+        font-weight: 600;   
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+            color: black;
+        }
+    }
+}
