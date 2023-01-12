@@ -13,10 +13,10 @@ const Sidebar = () => {
 						<span>Home</span>
 					</li>
 					<li>
-						<span>Playlist</span>
+						<span>Trending</span>
 					</li>
 					<li>
-						<span>Popular</span>
+						<span>Playlist</span>
 					</li>
 				</ul>
 			</div>
