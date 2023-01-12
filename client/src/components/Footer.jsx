@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <div className="play_content">
 			Press Play
 		</div>
     )

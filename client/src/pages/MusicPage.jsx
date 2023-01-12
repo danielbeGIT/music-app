@@ -7,7 +7,7 @@ import '../assets/styles/MusicPage.scss'
 
 // Components
 import Sidebar from '../components/Sidebar'
-import MusicCards from '../components/MusicCards'
+import SongCards from '../components/SongCards'
 import Footer from '../components/Footer'
 
 const MusicPage = ({ code }) => {
@@ -17,21 +17,22 @@ const MusicPage = ({ code }) => {
 	
 	return (
 		<Container>
-			<div className="music_body">
+			<div className="main_body">
 				{/* Links for playlist etc */}
 				<Sidebar />
-				<div className="main_body">
+				<div className="main_content">
 					<div className="search_bar">
 						<Form.Control type="search" placeholder="Search.." value={search} onChange={e => setSearch(e.target.value)}/>
 					</div>
-					{/* Music cards */}
+					{/* Song cards */}
 					<div className="contents">
-						<MusicCards />
+						<p>{search}</p>
+						<SongCards />
 					</div>
 				</div>
 			</div>
 			{/* Play/stop button and small image with currently playing music */}
-			<div className="music_footer">
+			<div className="footer">
 				<Footer />
 			</div>
 		</Container>
