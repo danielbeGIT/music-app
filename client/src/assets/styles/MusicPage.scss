@@ -1,7 +1,7 @@
 .container {
     padding: 0;
     display: grid;
-    grid-template-rows: 85vh 15vh;
+    grid-template-rows: 90vh 10vh;
     overflow: hidden;
     max-height: 100vh;
     max-width: 100vw;
@@ -31,12 +31,16 @@
             background-color: brown;
 
             .form-control {
-                width: 400px;
+                width: 350px;
                 padding: 0.4rem 1rem;
                 border-radius: 2rem;
                 border: none;
             }
         }
+
+        // .contents {
+            
+        // }
     }
 }
 
@@ -83,4 +87,23 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        .main_body {
+            grid-template-columns: 100vw;
+
+            .search_bar {
+                padding: 1.5rem;
+
+                .hidden {
+                    display: block;
+                }
+            }
+        }
+    }
+    .sidebar {
+        display: none;
+    }
 }
