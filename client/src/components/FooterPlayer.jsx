@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Footer = () => {
+const FooterPlayer = () => {
     return (
         <div className="play_content">
-			Press Play
+            Playing now
 		</div>
     )
 }
 
-export default Footer
+export default FooterPlayer

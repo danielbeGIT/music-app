@@ -1,9 +1,9 @@
 // Images & Styles
 import MainIcon from '../assets/images/icon.png'
 
-const Sidebar = () => {
+const Navbar = () => {
 	return (
-		<div className="sidebar">
+		<div className="nav_bar">
 			<div className="top_links">
 				<div className="logo">
 					<img src={MainIcon} alt="Main-Icon" />
@@ -24,4 +24,4 @@ const Sidebar = () => {
 	)
 }
 
-export default Sidebar
+export default Navbar

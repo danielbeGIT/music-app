@@ -1,10 +1,13 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
+
 
 const SongCards = () => {
+
     return (
-        <div className="song_cards">
-            Song Cards
-        </div>
+        <Container>
+            Songs
+        </Container>
     )
 }
 
