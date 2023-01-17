@@ -1,7 +1,8 @@
-// * {
+* {
+   margin: 0;
+}
 
-// }
-
-.hidden {
+// hide scrollbar
+body::-webkit-scrollbar {
    display: none;
 }

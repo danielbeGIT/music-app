@@ -1,13 +1,12 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
-
+import Header from './Header'
 
 const SongCards = () => {
 
     return (
-        <Container>
-            Songs
-        </Container>
+        <div className="song_contents">
+            <Header />
+        </div>
     )
 }
 

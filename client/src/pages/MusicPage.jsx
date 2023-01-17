@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Container, Form } from 'react-bootstrap'
+// import { Container, Form } from 'react-bootstrap'
 import useAuth from '../hooks/useAuth'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { useDataLayerValue } from '../context/DataLayer'
@@ -10,16 +10,15 @@ import '../assets/styles/MusicPage.scss'
 // Components
 import Sidebar from '../components/Sidebar'
 import SongCards from '../components/SongCards'
-import FooterPlayer from '../components/FooterPlayer'
-// import axios from 'axios'
+import Footer from '../components/Footer'
 
 const spotifyApi = new SpotifyWebApi()
 
 const MusicPage = ({ code }) => {
 	const accessToken = useAuth(code)
 	// const [player, setPlayer] = useState(null)
-	const [search, setSearch] = useState('')
-	console.log(search)
+	// const [search, setSearch] = useState('')
+	// console.log(search)
 
 	const [{ user, token }, dispatch] = useDataLayerValue()
 
@@ -39,6 +38,13 @@ const MusicPage = ({ code }) => {
 			dispatch({
 				type: 'SET_USER',
 				user: user,
+			})
+		})
+
+		spotifyApi.getUserPlaylists().then((playlists) => {
+			dispatch({
+				type: 'SET_PLAYLISTS',
+				playlists: playlists,
 			})
 		})
 
@@ -62,44 +68,22 @@ const MusicPage = ({ code }) => {
 		
 	}, [accessToken, dispatch])
 	
-	// if(user && token) {
-	// 	console.log("the user", user)
-	// 	console.log("the token", token)
-	// }
+	if(user && token) {
+		console.log("the user", user)
+		console.log("the token", token)
+	}
 
 	
 	return (
-		<Container>
+		<>
 			<div className="main_body">
-				{/* Links for playlist etc */}
-				<Sidebar />
 				<div className="main_content">
-					<div className="search_bar">
-						<Form.Control 
-							type="search" 
-							// What do you want to listen to? another placeholder?
-							placeholder="Search" 
-							value={search} 
-							onChange={e => setSearch(e.target.value)}
-						/>
-						<div className="menu_button hidden">
-							{/* Hamburger button */}
-							X
-							{/* Mobile Sidebar */}
-							{/* <Sidebar /> */}
-						</div>
-					</div>
-					{/* Song cards */}
-					<div className="contents">
-						<SongCards />
-					</div>
+					<Sidebar />
+					<SongCards />
 				</div>
+				<Footer />
 			</div>
-			{/* Play/stop button and small image with currently playing music */}
-			<div className="footer">
-				<FooterPlayer />
-			</div>
-		</Container>
+		</>
 	)
 }
 
