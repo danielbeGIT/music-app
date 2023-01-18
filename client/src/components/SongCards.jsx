@@ -1,11 +1,16 @@
 import React from 'react'
-import Header from './Header'
 
-const SongCards = () => {
-
+const SongCards = ({ track }) => {
     return (
-        <div className="song_contents">
-            <Header />
+        <div className="song_cards">
+            <img className="card_image" src={track.album.images[0].url} alt="" />
+            <div className="card_info">
+                <h1>{track.name}</h1>
+                <p>
+                    {track.artists.map((artist) => artist.name).join(", ")} -{" "}
+                    {track.album.name}
+                </p>
+            </div>
         </div>
     )
 }

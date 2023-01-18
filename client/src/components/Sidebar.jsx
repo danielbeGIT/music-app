@@ -1,34 +1,47 @@
-// Images & Styles
-import MainIcon from '../assets/images/icon.png'
-
-import SidebarOptions from './SidebarOptions'
-import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { useDataLayerValue } from '../context/DataLayer';
 
+// Images
+import MainIcon from '../assets/images/icon.png'
+
+// Icons
+import { IoLibrary } from 'react-icons/io5'
+import { MdHomeFilled, MdSearch } from 'react-icons/md'
+
+// Components
+import SidebarOptions from './SidebarOptions'
 
 const Sidebar = () => {
-	const [{ playlists }, dispatch] = useDataLayerValue()
+	const [{ playlists }] = useDataLayerValue()
 
-	if(playlists) {
-		console.log("the playlist", playlists)
-	}
+	// if(playlists) {
+	// 	console.log("the playlist", playlists)
+	// }
+	
 	return (
 		<div className="sidebar">
-			<img 
-				className="sidebar_logo"
-				src={MainIcon} 
-				alt="Main Logo" />
+
+			<div className="sidebar_logo">
+				<img 
+					src={MainIcon} 
+					alt="Main Logo" 
+				/>
+			</div>
+
+			<ul>
+				<li>
+					<MdHomeFilled />
+					<span>Home</span>
+				</li>
+				<li>
+					<MdSearch />
+					<span>Search</span>
+				</li>
+				<li>
+					<IoLibrary />
+					<span>Library</span>
+				</li>
+			</ul>
 			
-			<SidebarOptions Icon={HomeIcon} links="Home"/>
-			<SidebarOptions Icon={SearchIcon} links="Search"/>
-			<SidebarOptions Icon={LibraryMusicIcon} links="Library"/>
-			
-			<br/>
-			<strong className="sidebar_playlist">
-				PLAYLISTS
-			</strong>
 			<hr/>
 
 			{playlists?.items?.map(playlist => (

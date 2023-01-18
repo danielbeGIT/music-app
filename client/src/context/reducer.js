@@ -3,8 +3,7 @@ export const initialState = {
     playlists: [],
     playing: false,
     item: null,
-    // remove after developing
-    token: 'BQAMFxLGmdQuob7l2gC8e6dM2R9LO7f6or0uuTNRcefOYRTfOjm1YpUU2PUllsQ_EqTfdhu2j2iDVZPf48BGJ77exJw29mAP-fyoPDS0R2xw8vF9K_dKXwWYG7F0J6nMzF6piyc4sVK-JNw0wvvhUOdQGc4-92eRXJZrxu_QtYvZ0BbhZMpUl_NVSJ-vWNv0Q9CA1sMt2ENpF0X7NsOHnsqUrvw6Hqy3vL2teIB7gGLw8CTXffEEA2wSO540',
+    token: null,
 }
 
 // reducer is to check the current state and action is to upgrade/set new states
@@ -32,6 +31,13 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 playlists: action.playlists
+            }
+        }
+
+        case 'SET_FEATURED_PLAYLIST': {
+            return {
+                ...state,
+                featured_playlist: action.featured_playlist
             }
         }
 

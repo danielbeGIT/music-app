@@ -1,26 +1,29 @@
-import { useState, useEffect } from 'react'
-// import { Container, Form } from 'react-bootstrap'
 import useAuth from '../hooks/useAuth'
 import SpotifyWebApi from 'spotify-web-api-js'
+import { useEffect, useState } from 'react'
 import { useDataLayerValue } from '../context/DataLayer'
 
 // Images & Styles
 import '../assets/styles/MusicPage.scss'
 
+// Icons
+import SearchIcon from '@mui/icons-material/Search';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Avatar } from '@mui/material'
+
 // Components
 import Sidebar from '../components/Sidebar'
-import SongCards from '../components/SongCards'
+import MainInfo from '../components/MainInfo'
 import Footer from '../components/Footer'
 
 const spotifyApi = new SpotifyWebApi()
 
 const MusicPage = ({ code }) => {
 	const accessToken = useAuth(code)
-	// const [player, setPlayer] = useState(null)
-	// const [search, setSearch] = useState('')
-	// console.log(search)
-
 	const [{ user, token }, dispatch] = useDataLayerValue()
+
+	const [search, setSearch] = useState('')
+	const [searchResults, setSearchResults] = useState([])
 
 	useEffect(() => {
 		if (!accessToken) return
@@ -30,11 +33,8 @@ const MusicPage = ({ code }) => {
 		})
 		
 		spotifyApi.setAccessToken(accessToken)
-		// console.log("the token", accessToken)
 
 		spotifyApi.getMe().then((user) => {
-			// console.log("the user", user)
-
 			dispatch({
 				type: 'SET_USER',
 				user: user,
@@ -47,40 +47,86 @@ const MusicPage = ({ code }) => {
 				playlists: playlists,
 			})
 		})
-
-		// const getMyData = async () => {
-		// 	try {
-				
-		// 		await spotifyApi.getMe().then((user) => {
-		// 			// console.log("the user", user)
 		
-		// 			dispatch({
-		// 				type: 'SET_USER',
-		// 				user: user,
-		// 			})
-		// 		})
-	
-		// 	} catch (e) {
-		// 		console.log("Error message", e)
-		// 	}
-		// }
-		// getMyData()
-		
+		spotifyApi.getPlaylist('37i9dQZF1DX0SM0LYsmbMT').then((response) => {
+			dispatch({
+				type: 'SET_FEATURED_PLAYLIST',
+				featured_playlist: response,
+			})
+		})
 	}, [accessToken, dispatch])
-	
-	if(user && token) {
-		console.log("the user", user)
-		console.log("the token", token)
-	}
 
+	useEffect(() => {
+		if(!search) return setSearchResults([])
+		if(!accessToken) return
+
+		let cancel = false
+		spotifyApi.searchTracks(search).then(res => {
+			if(cancel) return
+			console.log(res)
+			setSearchResults(res.tracks.items.map(track => {
+				return {
+					artist: track.artists[0].name,
+					title: track.name,
+					uri: track.uri,
+					album: track.album.images
+				}
+			}))
+		})
+
+		return () => cancel = true
+	}, [search, accessToken])
+	
+	// only console log if there is user and token
+	// if(user && token) {
+	// 	console.log("the user", user)
+	// 	console.log("the token", token)
+	// }
 	
 	return (
 		<>
 			<div className="main_body">
 				<div className="main_content">
 					<Sidebar />
-					<SongCards />
+
+					<div className="song_contents">
+
+						<div className="header">
+							<div className="searchbar_container">
+								<SearchIcon />
+								<input 
+									placeholder="What do you want to listen to?" 
+									type="search" 
+									onChange={e => setSearch(e.target.value)}
+								/>
+							</div>
+
+							<div className="ham_menu">
+								<span>
+									X
+								</span>
+							</div>
+
+							<div className="profile_info">
+								<a href="/#">
+									<Avatar src={user?.images[0]?.url} alt={user?.display_name}/>
+									<span>{user?.display_name}</span>
+									<ArrowDropDownIcon />
+								</a>
+							</div>
+						</div>
+						<MainInfo />
+
+						{/* {searchResults.length > 1 ? (
+							searchResults.map(track => {
+								<Results track={track} key={track.uri} />
+							})
+						): (
+							<MainInfo />
+						)} */}
+					</div>
 				</div>
+
 				<Footer />
 			</div>
 		</>

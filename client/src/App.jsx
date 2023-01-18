@@ -1,9 +1,11 @@
+// Styles
 import "bootstrap/dist/css/bootstrap.min.css"
 import './assets/styles/App.scss'
+
+// Pages
 import Login from './pages/Login'
 import MusicPage from './pages/MusicPage'
 
-// Search for "code" through the window path/url path
 const code = new URLSearchParams(window.location.search).get('code')
 
 const App = () => {
@@ -16,9 +18,6 @@ const App = () => {
 					<Login />
 				)
 			}
-
-			{/* <MusicPage/> */}
-			{/* <Login /> */}
 		</>
 	)
 }

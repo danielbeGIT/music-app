@@ -1,10 +1,13 @@
 import React from 'react'
-import SearchIcon from '@mui/icons-material/Search';
-import { Avatar } from '@mui/material'
 import { useDataLayerValue } from '../context/DataLayer'
 
+// Icons
+import SearchIcon from '@mui/icons-material/Search';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Avatar } from '@mui/material'
+
 const Header = () => {
-	const [{ user }, dispatch] = useDataLayerValue()
+	const [{ user }] = useDataLayerValue()
 
     return (
         <div className="header">
@@ -12,13 +15,22 @@ const Header = () => {
                 <SearchIcon />
                 <input 
                     placeholder="What do you want to listen to?" 
-                    type="text" 
+                    type="search" 
                 />
             </div>
 
+            <div className="ham_menu">
+                <span>
+                    X
+                </span>
+            </div>
+
             <div className="profile_info">
-                <Avatar src={user?.images[0]?.url} alt={user?.display_name}/>
-                <p>{user?.display_name}</p>
+                <a href="/#">
+                    <Avatar src={user?.images[0]?.url} alt={user?.display_name}/>
+                    <span>{user?.display_name}</span>
+                    <ArrowDropDownIcon />
+                </a>
             </div>
         </div>
     )
