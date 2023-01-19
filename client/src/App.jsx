@@ -2,7 +2,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import './assets/styles/App.scss'
 
-// Pages
 import Login from './pages/Login'
 import MusicPage from './pages/MusicPage'
 
