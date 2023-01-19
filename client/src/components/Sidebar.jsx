@@ -7,9 +7,6 @@ import MainIcon from '../assets/images/icon.png'
 import { IoLibrary } from 'react-icons/io5'
 import { MdHomeFilled, MdSearch } from 'react-icons/md'
 
-// Components
-import SidebarOptions from './SidebarOptions'
-
 const Sidebar = () => {
 	const [{ playlists }] = useDataLayerValue()
 
@@ -44,9 +41,13 @@ const Sidebar = () => {
 			
 			<hr/>
 
-			{playlists?.items?.map(playlist => (
-				<SidebarOptions links={playlist.name} />
-			))}
+			{/* {playlists?.items?.map(playlist => (
+				<ul>
+					<li>
+						<span>{playlist.name}</span>
+					</li>
+				</ul>
+			))} */}
 		</div>
 	)
 }

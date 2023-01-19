@@ -48,36 +48,8 @@
             }
         }
 
-        .sidebar_options {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            color: $grayish;
-            height: 40px;
-            transition: 0.3s color ease-in-out;
-
-            &:hover {
-                color: $white;
-                
-            }
-        }
-
-        .sidebar_playlist {
-            margin-left: 10px;
-            padding: 5px;
-            font-size: $small-font;
-
-            hr {
-                border: 1px solid $third-color;
-                width: 90%;
-                margin: 10px;
-            }
-
-            p {
-                margin-top: 10px;
-                margin-left: 10px;
-                font-size: $medium-font;
-            }
+        hr {
+            margin: 1.5rem;
         }
     }
 
@@ -154,8 +126,7 @@
             display: flex;
             align-items: flex-end;
             background-color: $secondary-color;
-            padding-bottom: 20px;
-            padding-left: 20px;
+            padding: $one-rem;
 
             img {
                 max-height: 15vw;
@@ -172,13 +143,12 @@
             }
 
             p {
-                font-size: $medium-font;
-                font-weight: bold;
+                font-size: $small-font;
             }
         }
 
         .song_body {
-            margin-bottom: 65px;
+            margin-bottom: 70px;
 
             .song_icons {
                 display: flex;
@@ -253,39 +223,34 @@
     display: flex;
     justify-content: space-between;
     bottom: 0;
-    height: 65px;
+    height: 70px;
     width: 100%;
     padding: 1.5rem;
-
-    .footer_icon:hover {
-        transition: transform 0.3s ease-in-out;
-        transform: scale(1.2) !important;
-    }
-
 
     // Footer left
     .player_info {
         flex: 0.3;
         display: flex;
         align-items: center;
-        width: 300px;
 
         .player_image {
-            height: 60px;
-            width: 60px;
-            margin-right: 20px;
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
             object-fit: contain;
         }
 
         .playing_info {
             h4 {
                 margin: 0;
-                font-size: $big-font;
+                font-size: 10px;
+                font-weight: bold;
             }
 
             p {
+                color: $grayish;
                 margin: 0;
-                font-size: $small-font;
+                font-size: 10px;
             }
         }
     }
@@ -299,6 +264,17 @@
         align-items: center;
         justify-content: space-between;
         max-width: 400px;
+
+        .footer_icon {
+            &:hover {
+                transition: transform 0.3s ease-in-out;
+                transform: scale(1.2) !important;
+            }
+        }
+
+        .previous, .next, .state {
+            font-size: 2rem;
+        }
     }
 
 

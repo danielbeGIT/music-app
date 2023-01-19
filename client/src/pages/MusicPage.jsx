@@ -27,12 +27,17 @@ const MusicPage = ({ code }) => {
 
 	useEffect(() => {
 		if (!accessToken) return
+		spotifyApi.setAccessToken(accessToken)
+
 		dispatch({
 			type: 'SET_TOKEN',
 			token: accessToken,
 		})
-		
-		spotifyApi.setAccessToken(accessToken)
+
+		dispatch({
+			type: 'SET_SPOTIFY',
+			spotify: spotifyApi,
+		});
 
 		spotifyApi.getMe().then((user) => {
 			dispatch({
@@ -42,16 +47,18 @@ const MusicPage = ({ code }) => {
 		})
 
 		spotifyApi.getUserPlaylists().then((playlists) => {
+			console.log("my playlist", playlists)
+			
 			dispatch({
 				type: 'SET_PLAYLISTS',
-				playlists: playlists,
+				playlists,
 			})
 		})
 		
-		spotifyApi.getPlaylist('37i9dQZF1DX0SM0LYsmbMT').then((response) => {
+		spotifyApi.getPlaylist('37i9dQZEVXcQ9COmYvdajy').then((response) => {
 			dispatch({
-				type: 'SET_FEATURED_PLAYLIST',
-				featured_playlist: response,
+				type: 'SET_DISCOVER_WEEKLY',
+				discover_weekly: response,
 			})
 		})
 	}, [accessToken, dispatch])
@@ -78,7 +85,7 @@ const MusicPage = ({ code }) => {
 	}, [search, accessToken])
 	
 	// only console log if there is user and token
-	// if(user && token) {
+	// if (user && token) {
 	// 	console.log("the user", user)
 	// 	console.log("the token", token)
 	// }
@@ -115,7 +122,7 @@ const MusicPage = ({ code }) => {
 								</a>
 							</div>
 						</div>
-						<MainInfo />
+						<MainInfo spotify={spotifyApi}/>
 
 						{/* {searchResults.length > 1 ? (
 							searchResults.map(track => {
@@ -127,7 +134,7 @@ const MusicPage = ({ code }) => {
 					</div>
 				</div>
 
-				<Footer />
+				<Footer spotify={spotifyApi}/>
 			</div>
 		</>
 	)

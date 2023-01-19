@@ -1,14 +1,16 @@
 export const initialState = {
+    token: null,
     user: null,
     playlists: [],
+    spotify: null,
     playing: false,
+    discover_weekly: null,
     item: null,
-    token: null,
 }
 
 // reducer is to check the current state and action is to upgrade/set new states
 const reducer = (state, action) => {
-    console.log(action)
+    // console.log(action)
 
     // action dispatched with [type & payload]
     switch(action.type) {
@@ -34,10 +36,31 @@ const reducer = (state, action) => {
             }
         }
 
-        case 'SET_FEATURED_PLAYLIST': {
+        case 'SET_DISCOVER_WEEKLY': {
             return {
                 ...state,
-                featured_playlist: action.featured_playlist
+                discover_weekly: action.discover_weekly
+            }
+        }
+
+        case 'SET_SPOTIFY': {
+            return {
+                ...state,
+                spotify: action.spotify
+            }
+        }
+
+        case 'SET_ITEM': {
+            return {
+                ...state,
+                item: action.item
+            }
+        }
+
+        case 'SET_PLAYING': {
+            return {
+                ...state,
+                playing: action.playing
             }
         }
 
