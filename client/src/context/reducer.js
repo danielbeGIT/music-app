@@ -8,10 +8,9 @@ export const initialState = {
     item: null,
 }
 
-// reducer is to check the current state and action is to upgrade/set new states
+// reducer is for checking the current state and action, also to upgrade/set new states
 // action dispatched with [type & payload]
 // return the existing state/property and change the current action to user
-
 const reducer = (state, action) => {
     switch(action.type) {
         case 'SET_USER':

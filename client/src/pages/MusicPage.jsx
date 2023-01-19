@@ -47,8 +47,6 @@ const MusicPage = ({ code }) => {
 		})
 
 		spotifyApi.getUserPlaylists().then((playlists) => {
-			console.log("my playlist", playlists)
-			
 			dispatch({
 				type: 'SET_PLAYLISTS',
 				playlists,
