@@ -9,14 +9,12 @@ export const initialState = {
 }
 
 // reducer is to check the current state and action is to upgrade/set new states
-const reducer = (state, action) => {
-    // console.log(action)
+// action dispatched with [type & payload]
+// return the existing state/property and change the current action to user
 
-    // action dispatched with [type & payload]
+const reducer = (state, action) => {
     switch(action.type) {
         case 'SET_USER':
-
-            // return the existing state/property and change the current action to user
             return {
                 ...state,
                 user: action.user

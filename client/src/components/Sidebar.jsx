@@ -10,10 +10,6 @@ import { MdHomeFilled, MdSearch } from 'react-icons/md'
 const Sidebar = () => {
 	const [{ playlists }] = useDataLayerValue()
 
-	// if(playlists) {
-	// 	console.log("the playlist", playlists)
-	// }
-	
 	return (
 		<div className="sidebar">
 
@@ -41,13 +37,13 @@ const Sidebar = () => {
 			
 			<hr/>
 
-			{/* {playlists?.items?.map(playlist => (
+			{playlists?.items?.map(playlist => (
 				<ul>
 					<li>
 						<span>{playlist.name}</span>
 					</li>
 				</ul>
-			))} */}
+			))}
 		</div>
 	)
 }

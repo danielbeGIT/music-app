@@ -123,14 +123,6 @@ const MusicPage = ({ code }) => {
 							</div>
 						</div>
 						<MainInfo spotify={spotifyApi}/>
-
-						{/* {searchResults.length > 1 ? (
-							searchResults.map(track => {
-								<Results track={track} key={track.uri} />
-							})
-						): (
-							<MainInfo />
-						)} */}
 					</div>
 				</div>
 

@@ -13,7 +13,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 const MainInfo = ({ spotify }) => {
 	const [{ discover_weekly }, dispatch] = useDataLayerValue()
 
-    // Play the whole playlist (the big playlist button)
+    // Big button to play the featured playlist
     const playPlaylist = () => {
         spotify.play({
             context_uri: `spotify:playlist:37i9dQZEVXcQ9COmYvdajy`
@@ -80,15 +80,6 @@ const MainInfo = ({ spotify }) => {
                 {discover_weekly?.tracks.items.map(item => (
                     <SongCards playSong={playSong} track={item.track} key={item.track.uri}/>
                 ))}
-
-                {/* {searchResults.length > 1 ? (
-                    featured_playlist?.tracks.items.map(item => (
-                        <SongCards track={item.track} key={item.track.uri}/>
-                    ))
-                ): (
-                    <MainInfo />
-                )} */}
-
             </div>
         </>
     )

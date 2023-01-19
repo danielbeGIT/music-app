@@ -54,8 +54,6 @@ const Footer = ({ spotify }) => {
         spotify.skipToPrevious()
 
         spotify.getMyCurrentPlayingTrack().then((res) => {
-            // console.log("skip", res)
-            
             dispatch({
                 type: 'SET_ITEM',
                 item: res.item
@@ -73,8 +71,6 @@ const Footer = ({ spotify }) => {
         spotify.skipToNext()
 
         spotify.getMyCurrentPlayingTrack().then((res) => {
-            // console.log("next", res)
-
             dispatch({
                 type: 'SET_ITEM',
                 item: res.item
