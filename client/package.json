@@ -12,14 +12,10 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.3",
     "bootstrap": "^5.2.3",
-    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-=======
     "react-dotenv": "^0.1.3",
->>>>>>> 3a94e13 (fix)
     "react-icon": "^1.0.0",
     "react-icons": "^4.7.1",
     "react-scripts": "5.0.1",
@@ -27,10 +23,6 @@
     "sass": "^1.57.1",
     "spotify-web-api-js": "^1.5.2",
     "spotify-web-api-node": "^5.0.2",
-<<<<<<< HEAD
-=======
-    "spotify-web-playback": "^1.4.0",
->>>>>>> 3a94e13 (fix)
     "web-vitals": "^2.1.4"
   },
   "scripts": {
