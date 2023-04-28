@@ -3,7 +3,6 @@ import { useDataLayerValue } from "../context/DataLayer";
 
 // Components
 import SongCards from "./SongCards";
-import SearchCard from "./SearchCard";
 
 // Icons
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
@@ -170,11 +169,7 @@ const MainBody = ({ spotifyApi }) => {
         ) : (
           <>
             {searchResults?.tracks.items.map((item) => (
-              <SongCards
-                playSong={playSong}
-                track={item}
-                key={item.uri}
-              />
+              <SongCards playSong={playSong} track={item} key={item.uri} />
             ))}
           </>
         )}
