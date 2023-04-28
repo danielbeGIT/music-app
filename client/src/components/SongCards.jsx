@@ -14,7 +14,7 @@ const SongCards = ({ track, playSong }) => {
             <div className="card_info">
                 <h1>{track.name}</h1>
                 <p>
-                    {track.artists.map((artist) => artist.name).join(", ")} -{" "}
+                    {track.artists.map((artist) => artist.name).join(", ")} - {" "}
                     {track.album.name}
                 </p>
             </div>

@@ -1,9 +1,10 @@
 import { useDataLayerValue } from '../context/DataLayer';
 
-// Images
-import MainIcon from '../assets/images/icon.png'
+// Components
+import SidebarOptions from './SidebarOptions';
 
-// Icons
+// Images & Icons
+import MainIcon from '../assets/images/icon.png'
 import { IoLibrary } from 'react-icons/io5'
 import { MdHomeFilled, MdSearch } from 'react-icons/md'
 
@@ -12,35 +13,22 @@ const Sidebar = () => {
 
 	return (
 		<div className="sidebar">
-
 			<div className="sidebar_logo">
 				<img 
 					src={MainIcon} 
 					alt="Main Logo" 
 				/>
 			</div>
-
-			<ul>
-				<li>
-					<MdHomeFilled />
-					<span>Home</span>
-				</li>
-				<li>
-					<MdSearch />
-					<span>Search</span>
-				</li>
-				<li>
-					<IoLibrary />
-					<span>Library</span>
-				</li>
-			</ul>
+				<SidebarOptions title="Home" Icon={MdHomeFilled}/>
+				<SidebarOptions title="Search" Icon={MdSearch}/>
+				<SidebarOptions title="Library" Icon={IoLibrary}/>
 			
 			<hr/>
 
 			{playlists?.items?.map(playlist => (
 				<ul>
 					<li>
-						<span>{playlist.name}</span>
+						<SidebarOptions title={playlist.name}/>
 					</li>
 				</ul>
 			))}

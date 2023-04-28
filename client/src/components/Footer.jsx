@@ -12,12 +12,12 @@ import {
 import { CgPlayTrackNext, CgPlayTrackPrev } from 'react-icons/cg'
 import { FiRepeat } from 'react-icons/fi'
 
-const Footer = ({ spotify }) => {
+const Footer = ({ spotifyApi }) => {
     const [{ item, playing }, dispatch] = useDataLayerValue();
 
     // Check the current playing state
     useEffect(() => {
-        spotify.getMyCurrentPlaybackState().then((res) => {
+        spotifyApi.getMyCurrentPlaybackState().then((res) => {
             dispatch({
                 type: 'SET_PLAYING',
                 playing: res.is_playing
@@ -27,20 +27,22 @@ const Footer = ({ spotify }) => {
                 type: 'SET_ITEM',
                 item: res.item
             })
+        }).catch((err) => {
+            console.log("current playing error", err)
         })
-    }, [spotify])
+    }, [spotifyApi])
 
     // Pause/Play click function
     const handlePlayPause = () => {
         if (playing) {
-            spotify.pause()
+            spotifyApi.pause()
 
             dispatch({
                 type: 'SET_PLAYING',
                 playing: false
             })
         } else {
-            spotify.play()
+            spotifyApi.play()
 
             dispatch({
                 type: 'SET_PLAYING',
@@ -51,9 +53,9 @@ const Footer = ({ spotify }) => {
 
     // Skip to previous song
     const skipPrev = () => {
-        spotify.skipToPrevious()
+        spotifyApi.skipToPrevious()
 
-        spotify.getMyCurrentPlayingTrack().then((res) => {
+        spotifyApi.getMyCurrentPlayingTrack().then((res) => {
             dispatch({
                 type: 'SET_ITEM',
                 item: res.item
@@ -63,14 +65,16 @@ const Footer = ({ spotify }) => {
                 type: 'SET_PLAYING',
                 playing: true
             })
+        }).catch((err) => {
+            console.log("skip to prev error", err)
         })
     }
 
     // Skip to next song
     const skipNext = () => {
-        spotify.skipToNext()
+        spotifyApi.skipToNext()
 
-        spotify.getMyCurrentPlayingTrack().then((res) => {
+        spotifyApi.getMyCurrentPlayingTrack().then((res) => {
             dispatch({
                 type: 'SET_ITEM',
                 item: res.item
@@ -80,6 +84,8 @@ const Footer = ({ spotify }) => {
                 type: 'SET_PLAYING',
                 playing: true
             })
+        }).catch((err) => {
+            console.log("skip to next error", err)
         })
     }
 
