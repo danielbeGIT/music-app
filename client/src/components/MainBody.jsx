@@ -170,7 +170,11 @@ const MainBody = ({ spotifyApi }) => {
         ) : (
           <>
             {searchResults?.tracks.items.map((item) => (
-              <SearchCard />
+              <SongCards
+                playSong={playSong}
+                track={item}
+                key={item.uri}
+              />
             ))}
           </>
         )}
