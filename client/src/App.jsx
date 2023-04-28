@@ -34,7 +34,6 @@ const App = () => {
       spotifyApi
         .getPlaylist("37i9dQZEVXcQ9COmYvdajy")
         .then((res) => {
-          console.log("discover", res);
           dispatch({
             type: "SET_DISCOVER_WEEKLY",
             discover_weekly: res,

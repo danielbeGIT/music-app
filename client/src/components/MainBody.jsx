@@ -89,7 +89,6 @@ const MainBody = ({ spotifyApi }) => {
       .catch((err) => {
         console.log("search error", err);
       });
-    console.log(searchResults);
 
     return () => (cancel = true);
   }, [search, spotifyApi]);
