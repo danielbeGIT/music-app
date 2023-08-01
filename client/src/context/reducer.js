@@ -60,14 +60,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         selected_playlist: action.selected_playlist,
-      }
-      
+      };
+
     case "SET_PLAYLIST_ID":
       return {
         ...state,
         selected_playlist_id: action.selected_playlist_id,
-      }
-      
+      };
+
     default:
       return state;
   }

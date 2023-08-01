@@ -34,7 +34,7 @@ const App = () => {
       spotifyApi
         .getPlaylist("37i9dQZEVXcQ9COmYvdajy")
         .then((res) => {
-          console.log(res)
+          console.log(res);
           dispatch({
             type: "SET_PLAYLIST",
             selected_playlist: res,

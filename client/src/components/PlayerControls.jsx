@@ -114,7 +114,7 @@ const PlayerControls = ({ spotifyApi }) => {
       <CgPlayTrackNext className="footer_icon next" onClick={skipNext} />
       <FiRepeat className="footer_icon repeat" />
     </>
-  )
-}
+  );
+};
 
-export default PlayerControls
+export default PlayerControls;

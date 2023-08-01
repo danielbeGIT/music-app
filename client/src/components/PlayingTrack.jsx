@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDataLayerValue } from "../context/DataLayer";
 
-const PlayingTrack = ({ spotifyApi}) => {
+const PlayingTrack = ({ spotifyApi }) => {
   const [{ item }, dispatch] = useDataLayerValue();
 
-   // Check the current playing state
-   useEffect(() => {
+  // Check the current playing state
+  useEffect(() => {
     spotifyApi
       .getMyCurrentPlayingTrack()
       .then((res) => {
@@ -39,7 +39,7 @@ const PlayingTrack = ({ spotifyApi}) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default PlayingTrack
+export default PlayingTrack;

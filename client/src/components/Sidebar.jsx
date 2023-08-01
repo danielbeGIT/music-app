@@ -1,17 +1,12 @@
-import { useDataLayerValue } from "../context/DataLayer";
-
 // Components
-import SidebarOptions from "./SidebarOptions";
-import Playlists from "./Playlists"
+import Playlists from "./Playlists";
 
 // Images & Icons
 import MainIcon from "../assets/images/icon.png";
 import { IoLibrary } from "react-icons/io5";
 import { MdHomeFilled, MdSearch } from "react-icons/md";
 
-const Sidebar = ({ spotifyApi }) => {
-  const [{ user }, dispatch] = useDataLayerValue();
-
+const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar_logo">
@@ -20,13 +15,16 @@ const Sidebar = ({ spotifyApi }) => {
       <ul>
         <li className="sidebar_options">
           <MdHomeFilled />
-          <span>Home</span></li>
+          <span>Home</span>
+        </li>
         <li className="sidebar_options">
           <MdSearch />
-          <span>Search</span></li>
+          <span>Search</span>
+        </li>
         <li className="sidebar_options">
           <IoLibrary />
-          <span>Library</span></li>
+          <span>Library</span>
+        </li>
       </ul>
 
       <hr />

@@ -2,9 +2,7 @@ import PlayingTrack from "./PlayingTrack";
 import PlayerControls from "./PlayerControls";
 import Volume from "./Volume";
 
-
 const Footer = ({ spotifyApi }) => {
-
   return (
     <div className="footer_content">
       <div className="player_info">

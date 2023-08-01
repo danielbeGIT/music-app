@@ -30,7 +30,7 @@
     ul {
       padding: 0;
       list-style-type: none;
-      
+
       .sidebar_options {
         overflow: hidden;
         white-space: nowrap;
@@ -42,11 +42,11 @@
         cursor: pointer;
         transition: 0.3s color ease-in-out;
         padding: 0.8rem;
-  
+
         &:hover {
           color: $white;
         }
-  
+
         .p {
           margin-top: 10px;
           margin-left: 20px;
@@ -58,7 +58,7 @@
     hr {
       margin: 1rem;
     }
-    
+
     .playlist_options {
       height: 58vh;
       overflow: auto;
@@ -79,7 +79,7 @@
         cursor: pointer;
         transition: 0.3s color ease-in-out;
         padding: 0.8rem;
-  
+
         &:hover {
           color: $white;
         }
@@ -228,7 +228,7 @@
         margin: 0 25px;
         font-size: $medium-font;
         color: $grayish;
-        
+
         span {
           margin-bottom: 10px;
         }
@@ -241,7 +241,7 @@
         align-items: center;
         z-index: 100;
         color: $white;
-        
+
         .card_details {
           display: grid;
           grid-template-columns: 0.3fr 3fr 2.9fr 0.3fr;
@@ -290,7 +290,6 @@
             color: $grayish;
           }
         }
-        
 
         &:hover {
           cursor: pointer;

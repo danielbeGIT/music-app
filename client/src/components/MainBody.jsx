@@ -11,11 +11,12 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import DownloadIcon from "@mui/icons-material/Download";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Avatar } from "@mui/material";
 
 const MainBody = ({ spotifyApi }) => {
-  const [{ user, selected_playlist, selected_playlist_id }, dispatch] = useDataLayerValue();
+  const [{ user, selected_playlist, selected_playlist_id }, dispatch] =
+    useDataLayerValue();
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -96,8 +97,8 @@ const MainBody = ({ spotifyApi }) => {
 
   useEffect(() => {
     const getInitialPlaylist = () => {
-      const currentPlaylist = selected_playlist_id
-      console.log('current', currentPlaylist)
+      const currentPlaylist = selected_playlist_id;
+      console.log("clicked playlist", currentPlaylist);
 
       // const currentPlaylist = {
       //   id: selected_playlist_id.id,
@@ -119,11 +120,11 @@ const MainBody = ({ spotifyApi }) => {
       // }
       dispatch({
         type: "SET_PLAYLIST",
-        currentPlaylist
-      })
-    }
-    getInitialPlaylist()
-  }, [spotifyApi, dispatch, selected_playlist_id])
+        currentPlaylist,
+      });
+    };
+    getInitialPlaylist();
+  }, [selected_playlist_id, dispatch]);
 
   return (
     <div className="song_contents">
@@ -195,7 +196,7 @@ const MainBody = ({ spotifyApi }) => {
             </div>
 
             <hr />
-            
+
             {selected_playlist?.tracks.items.map((item, id) => (
               <SongCards
                 playSong={playSong}
@@ -207,7 +208,7 @@ const MainBody = ({ spotifyApi }) => {
           </>
         ) : (
           <>
-           <div className="card_detail_info">
+            <div className="card_detail_info">
               <span>#</span>
               <span>Title</span>
               <span>Album</span>
@@ -217,11 +218,11 @@ const MainBody = ({ spotifyApi }) => {
             <hr />
 
             {searchResults?.tracks.items.map((item, id) => (
-              <SongCards 
-                playSong={playSong} 
-                track={item} 
-                key={item.uri} 
-                id={id + 1} 
+              <SongCards
+                playSong={playSong}
+                track={item}
+                key={item.uri}
+                id={id + 1}
               />
             ))}
           </>
