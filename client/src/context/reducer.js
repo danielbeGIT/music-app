@@ -2,11 +2,11 @@ export const initialState = {
   user: null,
   playlists: [],
   spotify: null,
-  discover_weekly: null,
-  top_artists: null,
   playing: false,
   item: null,
   token: null,
+  selected_playlist: null,
+  selected_playlist_id: null,
 };
 
 // reducer is for checking the current state and action, also to upgrade/set new states
@@ -30,12 +30,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         item: action.item,
-      };
-
-    case "SET_DISCOVER_WEEKLY":
-      return {
-        ...state,
-        discover_weekly: action.discover_weekly,
       };
 
     case "SET_TOP_ARTISTS":
@@ -62,6 +56,18 @@ const reducer = (state, action) => {
         playlists: action.playlists,
       };
 
+    case "SET_PLAYLIST":
+      return {
+        ...state,
+        selected_playlist: action.selected_playlist,
+      }
+      
+    case "SET_PLAYLIST_ID":
+      return {
+        ...state,
+        selected_playlist_id: action.selected_playlist_id,
+      }
+      
     default:
       return state;
   }

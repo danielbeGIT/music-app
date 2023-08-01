@@ -34,31 +34,15 @@ const App = () => {
       spotifyApi
         .getPlaylist("37i9dQZEVXcQ9COmYvdajy")
         .then((res) => {
+          console.log(res)
           dispatch({
-            type: "SET_DISCOVER_WEEKLY",
-            discover_weekly: res,
+            type: "SET_PLAYLIST",
+            selected_playlist: res,
           });
         })
         .catch((err) => {
-          console.log("discovery error", err);
+          console.log("selected playlist error", err);
         });
-
-      spotifyApi
-        .getMyTopArtists()
-        .then((res) => {
-          dispatch({
-            type: "SET_TOP_ARTISTS",
-            top_artists: res,
-          });
-        })
-        .catch((err) => {
-          console.log("top artists error", err);
-        });
-
-      dispatch({
-        type: "SET_SPOTIFY",
-        spotify: spotifyApi,
-      });
 
       spotifyApi
         .getMe()
@@ -75,8 +59,6 @@ const App = () => {
       spotifyApi
         .getUserPlaylists()
         .then((playlists) => {
-          console.log("my playlist", playlists);
-
           dispatch({
             type: "SET_PLAYLISTS",
             playlists: playlists,
@@ -85,6 +67,11 @@ const App = () => {
         .catch((err) => {
           console.log("playlist error", err);
         });
+
+      dispatch({
+        type: "SET_SPOTIFY",
+        spotify: spotifyApi,
+      });
     }
   }, [token, dispatch]);
 

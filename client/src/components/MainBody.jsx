@@ -11,18 +11,19 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import DownloadIcon from "@mui/icons-material/Download";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Avatar } from "@mui/material";
 
 const MainBody = ({ spotifyApi }) => {
-  const [{ user, discover_weekly }, dispatch] = useDataLayerValue();
+  const [{ user, selected_playlist, selected_playlist_id }, dispatch] = useDataLayerValue();
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   // Big button to play the featured playlist
-  const playPlaylist = (id) => {
+  const playPlaylist = () => {
     spotifyApi
       .play({
-        context_uri: `spotify:playlist:37i9dQZEVXcQ9COmYvdajy`,
+        context_uri: `spotify:playlist:` + selected_playlist.id,
       })
       .then(() => {
         spotifyApi
@@ -93,6 +94,37 @@ const MainBody = ({ spotifyApi }) => {
     return () => (cancel = true);
   }, [search, spotifyApi]);
 
+  useEffect(() => {
+    const getInitialPlaylist = () => {
+      const currentPlaylist = selected_playlist_id
+      console.log('current', currentPlaylist)
+
+      // const currentPlaylist = {
+      //   id: selected_playlist_id.id,
+      //   name: selected_playlist_id.name,
+      //   description: selected_playlist_id.description.startsWith("<a")
+      //     ? ""
+      //     : selected_playlist_id.description,
+      //   images: selected_playlist_id.images[0].url,
+      //   tracks: selected_playlist_id.items.map(({ track }) => ({
+      //     id: track.id,
+      //     name: track.name,
+      //     artists: track.artists.map((artist) => artist.name),
+      //     image: track.album.images[2].url,
+      //     duration: track.duration_ms,
+      //     album: track.album.name,
+      //     context_uri: track.album.uri,
+      //     track_number: track.track_number,
+      //   }))
+      // }
+      dispatch({
+        type: "SET_PLAYLIST",
+        currentPlaylist
+      })
+    }
+    getInitialPlaylist()
+  }, [spotifyApi, dispatch, selected_playlist_id])
+
   return (
     <div className="song_contents">
       <div className="header">
@@ -131,21 +163,19 @@ const MainBody = ({ spotifyApi }) => {
         {searchResults.length >= 0 && (
           <>
             <img
-              src={discover_weekly?.images[0]?.url}
-              alt={discover_weekly?.name}
+              src={selected_playlist?.images[0]?.url}
+              alt={selected_playlist?.name}
             />
             <div className="text_info">
-              <strong>PLAYLIST</strong>
-              <br />
-              <h2>{discover_weekly?.name}</h2>
-              <p>{discover_weekly?.description}</p>
+              <h2>{selected_playlist?.name}</h2>
+              <p>{selected_playlist?.description}</p>
             </div>
           </>
         )}
       </div>
 
       <div className="song_body">
-        {searchResults.length >= 0 ? (
+        {searchResults?.length >= 0 ? (
           <>
             <div className="song_icons">
               <PlayCircleFilledIcon
@@ -157,18 +187,42 @@ const MainBody = ({ spotifyApi }) => {
               <MoreHorizIcon className="main_buttons" />
             </div>
 
-            {discover_weekly?.tracks.items.map((item) => (
+            <div className="card_detail_info">
+              <span>#</span>
+              <span>Title</span>
+              <span>Album</span>
+              <AccessTimeIcon />
+            </div>
+
+            <hr />
+            
+            {selected_playlist?.tracks.items.map((item, id) => (
               <SongCards
                 playSong={playSong}
                 track={item.track}
                 key={item.track.uri}
+                id={id + 1}
               />
             ))}
           </>
         ) : (
           <>
-            {searchResults?.tracks.items.map((item) => (
-              <SongCards playSong={playSong} track={item} key={item.uri} />
+           <div className="card_detail_info">
+              <span>#</span>
+              <span>Title</span>
+              <span>Album</span>
+              <AccessTimeIcon />
+            </div>
+
+            <hr />
+
+            {searchResults?.tracks.items.map((item, id) => (
+              <SongCards 
+                playSong={playSong} 
+                track={item} 
+                key={item.uri} 
+                id={id + 1} 
+              />
             ))}
           </>
         )}

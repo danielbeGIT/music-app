@@ -1,12 +1,15 @@
-import React from "react";
+// import { useDataLayerValue } from "../context/DataLayer";
 
-const SidebarOptions = ({ title, Icon }) => {
-  return (
-    <div className="sidebar_options">
-      {Icon && <Icon className="sidebar_icon" />}
-      {Icon ? <a>{title}</a> : <p>{title}</p>}
-    </div>
-  );
-};
+// const SidebarOptions = ({ title, Icon, playPlaylist }) => {
+//   const [{ playlists }, dispatch] = useDataLayerValue();
+//   return (
+//     <div className="sidebar_options">
+//       {Icon && <Icon className="sidebar_icon" />}
+//       <div onClick={() => playPlaylist()}>
+//         {Icon ? <a>{title}</a> : <p>{title}</p>}
+//       </div>
+//     </div>
+//   );
+// };
 
-export default SidebarOptions;
+// export default SidebarOptions;

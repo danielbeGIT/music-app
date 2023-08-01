@@ -16,6 +16,7 @@
     height: 100%;
     width: 100%;
     flex-direction: column;
+    overflow: hidden;
 
     .sidebar_logo {
       text-align: center;
@@ -26,30 +27,67 @@
         block-size: auto;
       }
     }
-
-    .sidebar_options {
-      height: 40px;
-      display: flex;
-      gap: $one-rem;
-      align-items: center;
-      cursor: pointer;
-      transition: 0.3s color ease-in-out;
-      gap: $one-rem;
-      padding: $one-rem;
-
-      &:hover {
-        color: $white;
-      }
-
-      .p {
-        margin-top: 10px;
-        margin-left: 20px;
-        font-size: 14px;
+    ul {
+      padding: 0;
+      list-style-type: none;
+      
+      .sidebar_options {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 40px;
+        display: flex;
+        gap: $one-rem;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.3s color ease-in-out;
+        padding: 0.8rem;
+  
+        &:hover {
+          color: $white;
+        }
+  
+        .p {
+          margin-top: 10px;
+          margin-left: 20px;
+          font-size: 14px;
+        }
       }
     }
 
     hr {
       margin: 1rem;
+    }
+    
+    .playlist_options {
+      height: 58vh;
+      overflow: auto;
+
+      ul {
+        padding: 0;
+        list-style-type: none;
+      }
+
+      .playlist_option {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 40px;
+        display: flex;
+        gap: $one-rem;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.3s color ease-in-out;
+        padding: 0.8rem;
+  
+        &:hover {
+          color: $white;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
@@ -76,6 +114,9 @@
       min-width: 30%;
       padding: 0 $one-rem;
       gap: 0.5rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
 
       input {
         border: none;
@@ -89,6 +130,9 @@
     }
 
     .profile_info {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -116,11 +160,14 @@
     height: 100vh;
     overflow-y: overlay;
 
-    body::-webkit-scrollbar {
+    &::-webkit-scrollbar {
       display: none;
     }
 
     .song_info {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       display: flex;
       align-items: flex-end;
       background-color: $secondary-color;
@@ -152,7 +199,7 @@
       .song_icons {
         display: flex;
         align-items: center;
-        padding-left: 25px;
+        padding-left: 20px;
 
         .MuiSvgIcon-root {
           margin-right: 20px;
@@ -167,27 +214,71 @@
 
         .big_play {
           font-size: $very-big-button !important;
-          margin-left: 20px;
-          margin-top: 20px;
-          margin-bottom: 20px;
+          margin: 20px;
+        }
+      }
+
+      hr {
+        margin: 0 15px;
+      }
+
+      .card_detail_info {
+        display: grid;
+        grid-template-columns: 0.3fr 3fr 4fr 0.3fr;
+        margin: 0 25px;
+        font-size: $medium-font;
+        color: $grayish;
+        
+        span {
+          margin-bottom: 10px;
         }
       }
 
       .song_cards {
-        margin: 0 40px;
-        padding: 10px;
+        margin: 0 20px;
+        padding: 5px;
         display: flex;
         align-items: center;
         z-index: 100;
         color: $white;
+        
+        .card_details {
+          display: grid;
+          grid-template-columns: 0.3fr 3fr 2.9fr 0.3fr;
+          margin: 15px 0 0 0;
+          // overflow: hidden;
+          // white-space: nowrap;
+          // text-overflow: ellipsis;
 
-        .card_image {
-          height: 40px;
-          width: 40px;
-        }
+          .track_number {
+            width: 10px;
+          }
 
-        .card_info {
-          margin: 10px;
+          .card_title {
+            width: 250px;
+
+            .card_title_info {
+              display: flex;
+
+              .card_image {
+                height: 50px;
+                width: 50px;
+              }
+
+              .card_title_artist {
+                width: 100%;
+                margin-left: 15px;
+              }
+            }
+          }
+
+          .card_album {
+            width: 100%;
+          }
+
+          .card_duration {
+            width: 300px;
+          }
 
           h1 {
             font-size: $big-font;
@@ -199,6 +290,7 @@
             color: $grayish;
           }
         }
+        
 
         &:hover {
           cursor: pointer;
@@ -241,6 +333,9 @@
         margin: 0;
         font-size: 10px;
         font-weight: bold;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       p {
@@ -279,8 +374,19 @@
     flex: 0.3;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     max-width: 300px;
+
+    .volume_icon {
+      &:hover {
+        transition: transform 0.3s ease-in-out;
+        transform: scale(1.2) !important;
+      }
+    }
+
+    .volume_slider {
+      margin-left: 10px;
+    }
   }
 }
 
@@ -358,6 +464,9 @@
 
     // Footer left
     .player_info {
+      .playing_info {
+        max-width: 100px;
+      }
       .player_image {
         display: none;
       }
