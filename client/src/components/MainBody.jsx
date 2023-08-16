@@ -98,33 +98,14 @@ const MainBody = ({ spotifyApi }) => {
   useEffect(() => {
     const getInitialPlaylist = () => {
       const currentPlaylist = selected_playlist_id;
-      console.log("clicked playlist", currentPlaylist);
 
-      // const currentPlaylist = {
-      //   id: selected_playlist_id.id,
-      //   name: selected_playlist_id.name,
-      //   description: selected_playlist_id.description.startsWith("<a")
-      //     ? ""
-      //     : selected_playlist_id.description,
-      //   images: selected_playlist_id.images[0].url,
-      //   tracks: selected_playlist_id.items.map(({ track }) => ({
-      //     id: track.id,
-      //     name: track.name,
-      //     artists: track.artists.map((artist) => artist.name),
-      //     image: track.album.images[2].url,
-      //     duration: track.duration_ms,
-      //     album: track.album.name,
-      //     context_uri: track.album.uri,
-      //     track_number: track.track_number,
-      //   }))
-      // }
       dispatch({
         type: "SET_PLAYLIST",
-        currentPlaylist,
+        selected_playlist: currentPlaylist,
       });
     };
     getInitialPlaylist();
-  }, [selected_playlist_id, dispatch]);
+  }, [spotifyApi, selected_playlist_id, dispatch]);
 
   return (
     <div className="song_contents">

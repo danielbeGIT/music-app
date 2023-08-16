@@ -1,12 +1,14 @@
 import { useDataLayerValue } from "../context/DataLayer";
 
-const Playlists = () => {
+const Playlists = ({ spotifyApi }) => {
   const [{ playlists }, dispatch] = useDataLayerValue();
 
   const onClickPlaylist = (playlistId) => {
-    dispatch({
-      type: "SET_PLAYLIST_ID",
-      selected_playlist_id: playlistId,
+    spotifyApi.getPlaylist(playlistId.id).then((tracks) => {
+      dispatch({
+        type: "SET_PLAYLIST_ID",
+        selected_playlist_id: tracks,
+      });
     });
   };
 

@@ -12,7 +12,7 @@ const MusicPage = ({ spotifyApi }) => {
   return (
     <div className="main_body">
       <div className="main_content">
-        <Sidebar />
+        <Sidebar spotifyApi={spotifyApi} />
         <MainBody spotifyApi={spotifyApi} />
       </div>
       <Footer spotifyApi={spotifyApi} />

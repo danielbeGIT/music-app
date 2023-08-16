@@ -1,0 +1,22 @@
+.login {
+  background-color: #000000;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+.login img {
+  max-inline-size: 80%;
+  block-size: auto;
+}
+.login .button {
+  text-decoration: none;
+  color: white;
+  background-color: #1db954;
+  padding: 0.5rem 2.5rem;
+  border-radius: 5rem;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+.login .button:hover {
+  color: #000000;
+}/*# sourceMappingURL=Login.css.map */

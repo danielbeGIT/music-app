@@ -6,7 +6,7 @@ import MainIcon from "../assets/images/icon.png";
 import { IoLibrary } from "react-icons/io5";
 import { MdHomeFilled, MdSearch } from "react-icons/md";
 
-const Sidebar = () => {
+const Sidebar = ({ spotifyApi }) => {
   return (
     <div className="sidebar">
       <div className="sidebar_logo">
@@ -29,7 +29,7 @@ const Sidebar = () => {
 
       <hr />
       <div className="playlist_options">
-        <Playlists />
+        <Playlists spotifyApi={spotifyApi} />
       </div>
     </div>
   );
